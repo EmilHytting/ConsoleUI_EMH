@@ -1,0 +1,15 @@
+C:\Users\emilm\Desktop\ConsoleUI\ConsoleUI_EMH\bin\Debug\net8.0\ConsoleUI_EMH.exe
+C:\Users\emilm\Desktop\ConsoleUI\ConsoleUI_EMH\bin\Debug\net8.0\ConsoleUI_EMH.deps.json
+C:\Users\emilm\Desktop\ConsoleUI\ConsoleUI_EMH\bin\Debug\net8.0\ConsoleUI_EMH.runtimeconfig.json
+C:\Users\emilm\Desktop\ConsoleUI\ConsoleUI_EMH\bin\Debug\net8.0\ConsoleUI_EMH.dll
+C:\Users\emilm\Desktop\ConsoleUI\ConsoleUI_EMH\bin\Debug\net8.0\ConsoleUI_EMH.pdb
+C:\Users\emilm\Desktop\ConsoleUI\ConsoleUI_EMH\obj\Debug\net8.0\ConsoleUI_EMH.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\emilm\Desktop\ConsoleUI\ConsoleUI_EMH\obj\Debug\net8.0\ConsoleUI_EMH.AssemblyInfoInputs.cache
+C:\Users\emilm\Desktop\ConsoleUI\ConsoleUI_EMH\obj\Debug\net8.0\ConsoleUI_EMH.AssemblyInfo.cs
+C:\Users\emilm\Desktop\ConsoleUI\ConsoleUI_EMH\obj\Debug\net8.0\ConsoleUI_EMH.csproj.CoreCompileInputs.cache
+C:\Users\emilm\Desktop\ConsoleUI\ConsoleUI_EMH\obj\Debug\net8.0\ConsoleUI_EMH.sourcelink.json
+C:\Users\emilm\Desktop\ConsoleUI\ConsoleUI_EMH\obj\Debug\net8.0\ConsoleUI_EMH.dll
+C:\Users\emilm\Desktop\ConsoleUI\ConsoleUI_EMH\obj\Debug\net8.0\refint\ConsoleUI_EMH.dll
+C:\Users\emilm\Desktop\ConsoleUI\ConsoleUI_EMH\obj\Debug\net8.0\ConsoleUI_EMH.pdb
+C:\Users\emilm\Desktop\ConsoleUI\ConsoleUI_EMH\obj\Debug\net8.0\ConsoleUI_EMH.genruntimeconfig.cache
+C:\Users\emilm\Desktop\ConsoleUI\ConsoleUI_EMH\obj\Debug\net8.0\ref\ConsoleUI_EMH.dll

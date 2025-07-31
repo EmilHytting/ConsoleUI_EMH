@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ConsoleUI_EMH/1.0.0": {
+        "runtime": {
+          "ConsoleUI_EMH.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ConsoleUI_EMH/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
