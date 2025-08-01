@@ -31,9 +31,9 @@ public class RowContainer : ContainerBase
         {
             var childSize = child.GetSize();
             width += childSize.Width;
-            if (childSize.Height > width)
+            if (childSize.Height > height)
             {
-                width = childSize.Width;
+                height = childSize.Height;
             }
         }
         return (width, height);
