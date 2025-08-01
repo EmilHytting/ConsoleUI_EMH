@@ -8,22 +8,29 @@ public class ColumnContainer : ContainerBase
     }
     public override void Render()
     {
-        ConsoleColor background = Console.BackgroundColor;
-        ConsoleColor foreground = Console.ForegroundColor;
-        int offsetX = Console.CursorLeft;
-        int offsetY = Console.CursorTop;
-        foreach (UIElement child in _children)
+        try
         {
-            child.Render();
-            var size = child.GetSize();
-            offsetY += size.Height;
-            Console.BackgroundColor = background;
-            Console.ForegroundColor = foreground;
-            Console.CursorLeft = offsetX;
-            if (offsetY < Console.BufferHeight)
+            ConsoleColor background = Console.BackgroundColor;
+            ConsoleColor foreground = Console.ForegroundColor;
+            int offsetX = Console.CursorLeft;
+            int offsetY = Console.CursorTop;
+            foreach (UIElement child in _children)
             {
-                Console.CursorTop = offsetY;
+                child.Render();
+                var size = child.GetSize();
+                offsetY += size.Height;
+                Console.BackgroundColor = background;
+                Console.ForegroundColor = foreground;
+                Console.CursorLeft = offsetX;
+                if (offsetY < Console.BufferHeight)
+                {
+                    Console.CursorTop = offsetY;
+                }
             }
+        }
+        catch (Exception)
+        {
+            // Ignorer fejl hvis der ikke er adgang til konsollen
         }
     }
     public override (int Width, int Height) GetSize()
