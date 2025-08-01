@@ -4,26 +4,37 @@ public class RowContainer : ContainerBase
 {
     public override void Render()
     {
-        int startLeft = Console.CursorLeft;
-        foreach (var child in _children)
+        ConsoleColor background = Console.BackgroundColor;
+        ConsoleColor foreground = Console.ForegroundColor;
+        int offsetX = Console.CursorLeft;
+        int offsetY = Console.CursorTop;
+        foreach (UIElement child in _children)
         {
             child.Render();
-            var (width, _) = child.GetSize();
-            Console.CursorLeft += width;
+            var size = child.GetSize();
+            offsetX += size.Width;
+            Console.BackgroundColor = background;
+            Console.ForegroundColor = foreground;
+            Console.CursorLeft = offsetX;
+            if (offsetY < Console.BufferHeight)
+            {
+                Console.CursorTop = offsetY;
+            }
         }
-        Console.CursorTop += 1;
-        Console.CursorLeft = startLeft;
     }
 
     public override (int Width, int Height) GetSize()
     {
         int width = 0;
         int height = 0;
-        foreach (var child in _children)
+        foreach (UIElement child in _children)
         {
-            var (w, h) = child.GetSize();
-            width += w;
-            if (h > height) height = h;
+            var childSize = child.GetSize();
+            width += childSize.Width;
+            if (childSize.Height > width)
+            {
+                width = childSize.Width;
+            }
         }
         return (width, height);
     }

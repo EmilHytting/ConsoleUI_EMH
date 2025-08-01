@@ -17,7 +17,6 @@ public class ColumnContainer : ContainerBase
             child.Render();
             var size = child.GetSize();
             offsetY += size.Height;
-            //Prepare cursor for next child
             Console.BackgroundColor = background;
             Console.ForegroundColor = foreground;
             Console.CursorLeft = offsetX;
