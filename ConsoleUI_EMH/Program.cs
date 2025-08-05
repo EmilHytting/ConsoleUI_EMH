@@ -1,30 +1,39 @@
 ﻿using ConsoleUI_EMH;
 using System;
 
+//Create some columns
+ColumnContainer idColumn = new();
+ColumnContainer namesColumn = new();
+ColumnContainer actionColumn = new();
 
+//Create some controls
+TextBox txtId = new TextBox();
+TextBox txtName = new TextBox();
+Button btnSave = new Button("Save", AddPerson);
 
+//Event handler as named function
+void AddPerson()
+{
+    idColumn.AddChild(new Label(txtId.Content)); //Add label with textbox content
+    namesColumn.AddChild(new Label(txtName.Content)); //Add name with textbox content
+    txtId.Content = ""; // Clear textbox
+    txtName.Content = ""; // Clear textbox
+}
 
+//Add some headers
+idColumn.AddChild(new Header("ID"));
+namesColumn.AddChild(new Header("NAME"));
+actionColumn.AddChild(new Header("ACTIONS"));
 
-ColumnContainer columnId = new();
-columnId.AddChild(new Header("Id"));
-columnId.AddChild(new Label("1"));
-columnId.AddChild(new Label("2"));
-var textBoxId = new TextBox();
-columnId.AddChild(textBoxId);
+//Add the controls
+idColumn.AddChild(txtId);
+namesColumn.AddChild(txtName);
+actionColumn.AddChild(btnSave);
 
-ColumnContainer columnName = new();
-columnName.AddChild(new Header("Name"));
-columnName.AddChild(new Label("Konrad Sommer"));
-columnName.AddChild(new Label("Anne Dam"));
-var textBoxName = new TextBox();
-columnName.AddChild(textBoxName);
-
-RowContainer rowContainer = new();
-rowContainer.AddChild(columnId);
-rowContainer.AddChild(columnName);
-
-// Eksempel på liste eller hovedkontrol
-var list = rowContainer;
+RowContainer list = new();
+list.AddChild(idColumn);
+list.AddChild(namesColumn);
+list.AddChild(actionColumn);
 
 ConsoleKeyInfo keyInfo;
 while (true)

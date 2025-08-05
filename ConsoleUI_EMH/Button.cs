@@ -4,13 +4,15 @@ public class Button : ControlBase
 {
     int defaultWidth = 20;
     public string Content = "";
-    public Button()
-    {
-
-    }
+    Action _onClicked;
     public Button(string content)
     {
         Content = content;
+    }
+    public Button(string content, Action? onClicked = null)
+    {
+        Content = content;
+        _onClicked = onClicked;
     }
 
     public override (int Width, int Height) GetSize()
@@ -47,6 +49,14 @@ public class Button : ControlBase
 
     public override void HandleKeyInfo(ConsoleKeyInfo keyInfo)
     {
-        // Button logic kan tilføjes her senere
+        switch (keyInfo.Key)
+        {
+            case ConsoleKey.Enter:
+                if (_onClicked != null)
+                {
+                    _onClicked?.Invoke();
+                }
+                break;
+        }
     }
 }
