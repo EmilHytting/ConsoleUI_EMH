@@ -1,26 +1,54 @@
 ﻿using ConsoleUI_EMH;
 using System;
 
-ColumnContainer column = new();
-column.AddChild(new Label("| ------------------- |"));
-column.AddChild(new Label("dID | Navn          |"));
-column.AddChild(new Label("1  | Konrad Sommer |"));
-column.AddChild(new Label("2  | Anne Dam      |"));
-column.AddChild(new Label("3  | Johnd Doe      |"));
-column.AddChild(new Label("4  | Hans Hansen   |"));
-column.AddChild(new Label("| ------------------- |"));
-column.AddChild(new Label(""));
-column.AddChild(new Button("Save"));
 
-column.Render();
 
-Console.WriteLine("\nKlik på en tast for at afslutte...");
 
-try
+
+ColumnContainer columnId = new();
+columnId.AddChild(new Header("Id"));
+columnId.AddChild(new Label("1"));
+columnId.AddChild(new Label("2"));
+var textBoxId = new TextBox();
+columnId.AddChild(textBoxId);
+
+ColumnContainer columnName = new();
+columnName.AddChild(new Header("Name"));
+columnName.AddChild(new Label("Konrad Sommer"));
+columnName.AddChild(new Label("Anne Dam"));
+var textBoxName = new TextBox();
+columnName.AddChild(textBoxName);
+
+RowContainer rowContainer = new();
+rowContainer.AddChild(columnId);
+rowContainer.AddChild(columnName);
+
+// Eksempel på liste eller hovedkontrol
+var list = rowContainer;
+
+ConsoleKeyInfo keyInfo;
+while (true)
 {
-    Console.ReadKey();
-}
-catch (InvalidOperationException)
-{
+    Console.Clear();
+    Console.CursorLeft = 0;
+    Console.CursorTop = 0;
+    list.Render();
 
+    keyInfo = Console.ReadKey(true);
+
+    switch (keyInfo.Key)
+    {
+        case ConsoleKey.Escape:
+            return;
+        case ConsoleKey.Tab:
+            if (keyInfo.Modifiers == ConsoleModifiers.Shift)
+                ControlBase.PreviousControl();
+            else
+                ControlBase.NextControl();
+            break;
+        default:
+            ControlBase? activeControl = ControlBase.GetActiveControl();
+            activeControl?.HandleKeyInfo(keyInfo);
+            break;
+    }
 }
