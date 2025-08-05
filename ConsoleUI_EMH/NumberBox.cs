@@ -1,17 +1,28 @@
 namespace ConsoleUI_EMH;
 
-public class TextBox : ControlBase
+public class NumberBox : ControlBase
 {
     int defaultWidth = 20;
-    public string Content = "";
-    public TextBox()
+    private int _value = 0;
+
+    public int Value
+    {
+        get => _value;
+        set => _value = value;
+    }
+
+    public string Content => _value.ToString();
+
+    public NumberBox()
     {
 
     }
-    public TextBox(string content)
+
+    public NumberBox(int value)
     {
-        Content = content;
+        _value = value;
     }
+
     public override void Render()
     {
         Render(defaultWidth, 1);
@@ -38,19 +49,10 @@ public class TextBox : ControlBase
         Console.Write(content);
         Console.ResetColor();
     }
+
     public override (int Width, int Height) GetSize()
     {
-        string[] lines = Content.Split("\n");
-        int height = lines.Length;
-        int width = defaultWidth;
-        foreach (string line in lines)
-        {
-            if (line.Length > width)
-            {
-                width = line.Length;
-            }
-        }
-        return (width, height);
+        return (defaultWidth, 1);
     }
 
     public override void HandleKeyInfo(ConsoleKeyInfo keyInfo)
@@ -58,12 +60,22 @@ public class TextBox : ControlBase
         switch (keyInfo.Key)
         {
             case ConsoleKey.Backspace:
-                if (Content.Length > 0)
-                    Content = Content.Substring(0, Content.Length - 1);
+                if (_value > 0)
+                    _value = _value / 10; // Fjern sidste ciffer
+                break;
+            case ConsoleKey.UpArrow:
+                _value++;
+                break;
+            case ConsoleKey.DownArrow:
+                if (_value > 0)
+                    _value--;
                 break;
             default:
-                if (Content.Length < defaultWidth && !char.IsControl(keyInfo.KeyChar))
-                    Content += keyInfo.KeyChar;
+                // Kun tilføj tal
+                if (char.IsDigit(keyInfo.KeyChar))
+                {
+                    _value = _value * 10 + (keyInfo.KeyChar - '0');
+                }
                 break;
         }
     }
