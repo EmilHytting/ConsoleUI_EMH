@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ConsoleUI_EMH")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7f242f219c8e67876eb9df3134b158e00d217a6a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc83da7d94adb3e6e510f108dcf61d07bae7e174")]
 [assembly: System.Reflection.AssemblyProductAttribute("ConsoleUI_EMH")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ConsoleUI_EMH")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -31,4 +31,10 @@ public abstract class ControlBase : UIElement
     // Require child classes to handle KeyInfo from console
     public abstract void HandleKeyInfo(ConsoleKeyInfo keyInfo);
 
+    public ControlBase()
+    {
+        // Registrer denne kontrol når den oprettes
+        AllControls.Add(this);
+    }
+
 } //ControlBase.cs
