@@ -2,6 +2,8 @@ namespace ConsoleUI_EMH
 {
     public class Label : UIElement
     {
+
+        int _width = 20; // Default width
         public string Content = "";
         public Label()
         {
@@ -10,6 +12,12 @@ namespace ConsoleUI_EMH
         public Label(string content)
         {
             Content = content;
+        }
+
+        public Label(string content, int width)
+        {
+            Content = content;
+            _width = width;
         }
 
         public override void Render()
