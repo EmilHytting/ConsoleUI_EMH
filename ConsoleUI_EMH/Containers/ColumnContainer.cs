@@ -1,28 +1,35 @@
 namespace ConsoleUI_EMH;
 
-public class RowContainer : ContainerBase
+public class ColumnContainer : ContainerBase
 {
+    public ColumnContainer()
+    {
+
+    }
     public override void Render()
+    {
+        Render(int.MaxValue, int.MaxValue);
+    }
+
+    public override void Render(int maxWidth, int maxHeight)
     {
         ConsoleColor background = Console.BackgroundColor;
         ConsoleColor foreground = Console.ForegroundColor;
+
         int offsetX = Console.CursorLeft;
         int offsetY = Console.CursorTop;
         foreach (UIElement child in _children)
         {
-            child.Render();
+            Console.SetCursorPosition(offsetX, offsetY);
             var size = child.GetSize();
-            offsetX += size.Width;
+            child.Render(size.Width, size.Height);
+            offsetY += size.Height;
+
+            //Prepare cursor for next child
             Console.BackgroundColor = background;
             Console.ForegroundColor = foreground;
-            Console.CursorLeft = offsetX;
-            if (offsetY < Console.BufferHeight)
-            {
-                Console.CursorTop = offsetY;
-            }
         }
     }
-
     public override (int Width, int Height) GetSize()
     {
         int width = 0;
@@ -30,10 +37,10 @@ public class RowContainer : ContainerBase
         foreach (UIElement child in _children)
         {
             var childSize = child.GetSize();
-            width += childSize.Width;
-            if (childSize.Height > height)
+            height += childSize.Height; //diff
+            if (childSize.Width > width) //diff
             {
-                height = childSize.Height;
+                width = childSize.Width; //diff
             }
         }
         return (width, height);
