@@ -14,36 +14,22 @@ public class TextBox : ControlBase
     }
     public override void Render()
     {
-        Console.BackgroundColor = IsActive() ? ConsoleColor.DarkYellow : ConsoleColor.DarkGray;
-        Console.ForegroundColor = ConsoleColor.White;
-        string content = Content;
-        if (content.Length > defaultWidth)
-        {
-            content.Substring(0, defaultWidth);
-        }
-        else if (content.Length < defaultWidth)
-        {
-            content = content.PadRight(defaultWidth);
-        }
-        Console.Write(content);
+        Render(defaultWidth, 1);
     }
+
     public override void Render(int maxWidth, int maxHeight)
     {
         Console.BackgroundColor = IsActive() ? ConsoleColor.DarkYellow : ConsoleColor.DarkGray;
         Console.ForegroundColor = ConsoleColor.White;
-
         string content = Content;
-        int width = Math.Min(defaultWidth, maxWidth);
-
-        if (content.Length > width)
+        if (content.Length > maxWidth)
         {
-            content = content.Substring(0, width);
+            content = content.Substring(0, maxWidth);
         }
-        else if (content.Length < width)
+        else if (content.Length < maxWidth)
         {
-            content = content.PadRight(width);
+            content = content.PadRight(maxWidth - 1);
         }
-
         Console.Write(content);
         Console.ResetColor();
     }
@@ -67,16 +53,13 @@ public class TextBox : ControlBase
         switch (keyInfo.Key)
         {
             case ConsoleKey.Backspace:
-                Content = Content.Substring(0, Content.Length - 1);
-                break;
-            case ConsoleKey.Enter:
+                if (Content.Length > 0)
+                    Content = Content.Substring(0, Content.Length - 1);
                 break;
             default:
-                System.Text.RegularExpressions.Regex isLetterPattern = new(@"[\w\s]");
-                string letter = "" + keyInfo.KeyChar;
-                if (isLetterPattern.IsMatch(letter))
+                if (Content.Length < defaultWidth && !char.IsControl(keyInfo.KeyChar))
                     Content += keyInfo.KeyChar;
                 break;
         }
     }
-} //TextBox.cs
+}

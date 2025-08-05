@@ -10,6 +10,7 @@ ColumnContainer actionColumn = new();
 TextBox txtId = new TextBox();
 TextBox txtName = new TextBox();
 Button btnSave = new Button("Save", AddPerson);
+Button btnReset = new Button("Reset", ResetFields);
 
 //Event handler as named function
 void AddPerson()
@@ -18,6 +19,13 @@ void AddPerson()
     namesColumn.AddChild(new Label(txtName.Content)); //Add name with textbox content
     txtId.Content = ""; // Clear textbox
     txtName.Content = ""; // Clear textbox
+}
+
+//Reset function
+void ResetFields()
+{
+    txtId.Content = "";
+    txtName.Content = "";
 }
 
 //Add some headers
@@ -29,6 +37,7 @@ actionColumn.AddChild(new Header("ACTIONS"));
 idColumn.AddChild(txtId);
 namesColumn.AddChild(txtName);
 actionColumn.AddChild(btnSave);
+actionColumn.AddChild(btnReset);
 
 RowContainer list = new();
 list.AddChild(idColumn);
